@@ -4,9 +4,55 @@
 #include <iostream>
 using namespace std;
 
+//podmnojestva (chastichni i pulni)
+//sbor
+//sechenie
+//razlika
+//cartesianski produkt
+//vuvejdane na danni
+//menu
+
+void enterElementsOfArrays(float masivA[], float masivB[])
+{
+    int n, m;
+    
+    cout << "Enter how many elements you want to have in the first set (from 2 to 100): ";
+    
+    //have to find out how to display error message if wrong data is entered in while cycles!!!
+
+    do {
+
+        cin >> n;
+
+    } while (n < 2 or n > 100);
+
+    cout << "Enter the elements of the first array: " << endl;
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> masivA[i];
+    }
+
+
+    cout << "Enter how many elements you want to have in the second set (from 2 to 100): ";
+    do {
+
+        cin >> m;
+
+    } while (m < 2 or m > 100);
+
+    cout << "Enter the elements of the second array: " << endl;
+
+    for (int i = 0; i < m; i++)
+    {
+        cin >> masivB[i];
+    }
+}
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    float masivA[200], masivB[200];
+    enterElementsOfArrays(masivA, masivB);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
