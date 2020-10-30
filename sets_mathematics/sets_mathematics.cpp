@@ -48,7 +48,47 @@ void enterElementsOfArrays(float masivA[], float masivB[])
         cin >> masivB[i];
     }
 }
+void Menu()
+{
+    cout << "---------------------------" << endl;
+    cout << "1) podmnojestva" << endl;
+    cout << "2) sbor" << endl;
+    cout << "3) sechenie" << endl;
+    cout << "4) razlika" << endl;
+    cout << "5) cartesianski produkt" << endl;
+    cout << "---------------------------" << endl;
+}
+void mainMenu()
+{
+    bool again = true;
+    do
+    {
+        Menu();
+        char choice;
+        cout << endl << "Your choice is: ";
+        cin >> choice;
 
+        switch (choice)
+        {
+            case '1': ;
+                break;
+
+            case '2': ;
+                break;
+
+            case '3': ;
+                break;
+
+            case '4': ;
+                break;
+
+            case '5': ;
+                break;
+            case 'Q': again = false;
+
+        }
+    } while (again);
+}
 int main()
 {
     float masivA[200], masivB[200];
