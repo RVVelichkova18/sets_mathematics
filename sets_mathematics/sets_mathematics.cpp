@@ -69,47 +69,87 @@ void enterElementsOfArrays(float masivA[], float masivB[], int n, int m)
     }
 }
 
-void Menu()
-{
-    cout << "---------------------------" << endl;
-    cout << "1) podmnojestva" << endl;
-    cout << "2) sbor" << endl;
-    cout << "3) sechenie" << endl;
-    cout << "4) razlika" << endl;
-    cout << "5) cartesianski produkt" << endl;
-    cout << "---------------------------" << endl;
+bool secondMenu(float masivA, float masivB, int n, int m) {
+	int choice2;
+	cout << "----------Options----------" << endl;
+	cout << "2) Union of the sets A and B " << endl;
+	cout << "3) Cartesian product of the sets A and B " << endl;
+	cout << "4) Intersection of the sets A and B" << endl;
+	cout << "5) Set difference of the sets A and B" << endl;
+	cout << "6) Subsets of the sets A and B" << endl;
+	cout << "0) Quit" << endl;
+	cout << "Enter your choice: ";
+	cin >> choice2;
+	if (choice2 != 2 && choice2 != 3 && choice2 != 4) {
+		cout << "There is no such option here! Bye for now!";
+	}
+	else {
+		//this is the case for the menu options
+		switch (choice2) {
+			//the case for the first option
+			case 2:
+
+				cout << endl;
+				return true;
+				break;
+				//the case for the second option
+			case 3:
+
+				cout << endl;
+				return true;
+				break;
+				//the brake state of the program
+			case 4:
+				return false;
+			default:
+				break;
+		}
+	}
+	return false;
+
 }
-void mainMenu(float masivA[], float masivB[], int n, int m)
-{
-    bool again = true;
-    do
-    {
-        Menu();
-        char choice;
-        cout << endl << "Your choice is: ";
-        cin >> choice;
 
-        switch (choice)
-        {
-            case '1': ;
-                break;
+//main menu
+bool mainMenu(float masivA, float masivB, int n, int m) {
 
-            case '2': ;
-                break;
 
-            case '3': ;
-                break;
+	bool secondmenu;
+	int choice;
+	//Greetings and the menu options
+	cout << "----------WELCOME  TO  OUR  PROGRAM---------- " << endl;
+	cout << endl;
+	cout << "1)Enter (1) if you want to know how to use mathematical sets operations." << endl;
+	cout << "0) Quit" << endl;
+	cout << "Enter your choice:";
+	cin >> choice;
+	if (choice != 1 && choice != 0) {
+		cout << "There is no such option here! Bye for now!";
+	}
+	else {
+		//this is the case for the menu options
+		switch (choice) {
+			case 1: {
+				enterElementsOfArrays(masivA, masivB, m, n);
+				//opens the second menu and repeats it
+				do {
+					secondmenu = secondMenu(masivA, masivB, n, m);
+				} while (secondmenu);
 
-            case '4': ;
-                break;
+				return true;
+			}
+				  //exit
+			case 4:
+				cout << "Bye for now!" << endl;
+				return false;
 
-            case '5': cartesianProduct(masivA, masivB, n, m);
-                break;
-            case 'Q': again = false;
-
-        }
-    } while (again);
+			default:
+				break;
+		}
+	}
+	//stops the main menu from repeating
+	return false;
 }
+
 
 int main()
 {
