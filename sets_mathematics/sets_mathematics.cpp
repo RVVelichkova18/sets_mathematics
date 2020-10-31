@@ -4,17 +4,95 @@
 #include <iostream>
 using namespace std;
 
+float masivA[200], masivB[200];
+int n, m;
+int intersectionIndex;
+float arr[100];
+
 //podmnojestva (chastichni i pulni)
-//sbor
+//obedinenie
 //sechenie
 //razlika
 //cartesianski produkt
-//vuvejdane na danni
 //menu
+
+void cartesianProduct(float masivA[], float masivB[], int array1Size, int array2Size)
+{
+    cout << "cartesian product is: {";
+
+    for (int i = 0; i < array1Size; i++)
+    {
+        for (int j = 0; j < array2Size; j++)
+        {
+            cout << "(" << masivA[i] << ", " << masivB[j] << ") ";
+        }
+    }
+
+    cout << "}" << endl;
+}
+
+void findIntersectionOfSets(float masivA[], int n, float masivB[], int m, float arr[], int intersectionIndex)
+{
+    
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (masivA[i] == masivB[j])
+            {
+                arr[intersectionIndex] += masivA[i];
+                intersectionIndex++;
+            }
+        }
+    }
+    
+    cout << "intersection is: {";
+    for (int i = 0; i < intersectionIndex; i++)
+    {
+        cout << arr[i] << ", ";
+    }
+    cout << "} \n";
+}
+
+void findUnionOfSets(float masivA[], float masivB[], int n, int m, float arr[], int intersectionIndex)
+{
+    cout << "the union is: {";
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < intersectionIndex; j++)
+        {
+            if (masivA[i] != arr[j])
+            {
+                cout << masivA[i] << " ";
+            }
+        }
+    }
+    
+    for (int i = 0; i < intersectionIndex; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < intersectionIndex; j++)
+        {
+            if (masivB[i] != arr[j])
+            {
+                cout << masivA[i] << " ";
+            }
+        }
+    }
+
+    
+    cout << "} \n";
+}
+
+
 
 void enterElementsOfArrays(float masivA[], float masivB[])
 {
-    int n, m;
+    
     
     cout << "Enter how many elements you want to have in the first set (from 2 to 100): ";
     
@@ -47,53 +125,37 @@ void enterElementsOfArrays(float masivA[], float masivB[])
     {
         cin >> masivB[i];
     }
+
+    
 }
-void Menu()
-{
-    cout << "---------------------------" << endl;
-    cout << "1) podmnojestva" << endl;
-    cout << "2) sbor" << endl;
-    cout << "3) sechenie" << endl;
-    cout << "4) razlika" << endl;
-    cout << "5) cartesianski produkt" << endl;
-    cout << "---------------------------" << endl;
-}
-void mainMenu()
-{
-    bool again = true;
-    do
-    {
-        Menu();
-        char choice;
-        cout << endl << "Your choice is: ";
-        cin >> choice;
 
-        switch (choice)
-        {
-            case '1': ;
-                break;
+//tuk sedi menuto
 
-            case '2': ;
-                break;
 
-            case '3': ;
-                break;
-
-            case '4': ;
-                break;
-
-            case '5': ;
-                break;
-            case 'Q': again = false;
-
-        }
-    } while (again);
-}
 int main()
 {
-    float masivA[200], masivB[200];
+    
+
     enterElementsOfArrays(masivA, masivB);
+    findIntersectionOfSets(masivA, n, masivB, m, arr, intersectionIndex);
+    findUnionOfSets(masivA, masivB, n, m, arr, intersectionIndex);
+    //cartesianProduct(masivA, masivB, n, m);
+
+
+
+
+
 }
+
+
+
+//vuvejdane na danni
+
+
+
+
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
