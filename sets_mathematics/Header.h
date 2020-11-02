@@ -2,20 +2,22 @@
 #include <iostream>
 using namespace std;
 
-
-
 int difference(float* masivA, float* masivB, int n, int m, float masivC[])
 {
 	int k = 0;
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) 
+	{
 		bool found = false;
-		for (int j = 0; j < m; j++) {
-			if (masivA[i] == masivB[j]) {
+		for (int j = 0; j < m; j++) 
+		{
+			if (masivA[i] == masivB[j]) 
+			{
 				found = true;
 				break;
 			}
 		}
-		if (!found) {
+		if (!found) 
+		{
 			masivC[k++] = masivA[i];
 		}
 	}
@@ -58,11 +60,20 @@ void showDifference(float* masivA, float* masivB, int n, int m)
 	}
 
 	cout << endl;
+	cout << "Visualization: " << endl;
+	cout << endl;
+	cout << "   ****   ****" << endl;
+	cout << " ***************" << endl;
+	cout << "******** ********" << endl;
+	cout << "******** ********" << endl;
+	cout << "******** ********" << endl;
+	cout << " ***************" << endl;
+	cout << "   ****   ****" << endl;
 }
 
 float findUnion(float* masivA, float* masivB, int n, int m)
 {
-	cout << "Union is: ";
+	cout << "Union is: { ";
 	for (int i = 0; i < n; i++)
 	{
 		cout << masivA[i] << " ";
@@ -84,12 +95,26 @@ float findUnion(float* masivA, float* masivB, int n, int m)
 			cout << masivB[j] << " ";
 		}
 	}
+
+	cout << "}" << endl;
+	cout << endl;
+	cout << "Visualization: " << endl;
+	cout << endl;
+	cout << "   ****   ****" << endl;
+	cout << " ***************" << endl;
+	cout << "*****************" << endl;
+	cout << "*****************" << endl;
+	cout << "*****************" << endl;
+	cout << " ***************" << endl;
+	cout << "   ****   ****" << endl;
+
 	return 0;
 }
 
 int findIntersection(float* masivA, float* masivB, int n, int m, float masivI[])
 {
 	int k = 0;
+
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
@@ -100,24 +125,39 @@ int findIntersection(float* masivA, float* masivB, int n, int m, float masivI[])
 			}
 		}
 	}
+
 	return k;
 }
 
 void printIntersection(float* masivA, float* masivB, int n, int m)
 {
 	float masivI[100];
-	cout << "Intersection is: ";
+	cout << "Intersection is: { ";
 	int intersectCount = findIntersection(masivA, masivB, n, m, masivI);
+
 	for (int i = 0; i < intersectCount; i++)
 	{
 		cout << masivI[i] << " ";
 	}
+	cout << "}" << endl;
+
+	cout << endl;
+	cout << "Visualization: " << endl;
+	cout << endl;
+	cout << "   ****   ****" << endl;
+	cout << " *      *      *" << endl;
+	cout << "*      ***      *" << endl;
+	cout << "*      ***      *" << endl;
+	cout << "*      ***      *" << endl;
+	cout << " *      *      *" << endl;
+	cout << "   ****   ****" << endl;
 }
 
 bool isSubset(float* masivA, float* masivB, int m, int n)
 {
 	int i = 0;
 	int j = 0;
+
 	for (i = 0; i < n; i++)
 	{
 		for (j = 0; j < m; j++)
@@ -128,32 +168,44 @@ bool isSubset(float* masivA, float* masivB, int m, int n)
 		if (j == m)
 			return 0;
 	}
+
 	return 1;
 }
 
-
 void showSubset(float* masivA, float* masivB, int n, int m)
 {
-
 	if (m < n)
 	{
 		if (isSubset(masivA, masivB, n, m))
-			cout << "masivB is subset of masivA" << endl;
+			cout << "* B is subset of A" << endl;
 		else
-			cout << "masivB is not subset of masivA" << endl;
+			cout << "* B is not subset of A" << endl;
 	}
+
 	else
 	{
 		if (isSubset(masivB, masivA, m, n))
-			cout << "masivA is subset of masivB" << endl;
+			cout << "* A is subset of B" << endl;
 		else
-			cout << "masivA is not subset of masivB" << endl;
+			cout << "* A is not subset of B" << endl;
 	}
+
+	cout << endl;
+	cout << "Visualization: " << endl;
+	cout << endl;
+	cout << "   ****" << endl;
+	cout << " *      *" << endl;
+	cout << "*   **   *" << endl;
+	cout << "*  *  *  *" << endl;
+	cout << "*   **   *" << endl;
+	cout << " *      *" << endl;
+	cout << "   ****" << endl;
 }
 
 void cartesianProduct(float* masivA, float* masivB, int n, int m)
 {
-	cout << "cartesian product is: {";
+	cout << endl;
+	cout << "* Cartesian product is: { ";
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
@@ -164,25 +216,31 @@ void cartesianProduct(float* masivA, float* masivB, int n, int m)
 	cout << "} ";
 }
 
-
-
-bool secondMenu(float* masivA, float* masivB, int n, int m) {
+bool secondMenu(float* masivA, float* masivB, int n, int m) 
+{
 	int choice2;
-	cout << "----------Options----------" << endl;
+
+	cout << "____________________________________________________________" << endl;
+	cout << "___________________________Options__________________________" << endl;
 	cout << "2) Union of the sets A and B " << endl;
 	cout << "3) Cartesian product of the sets A and B " << endl;
 	cout << "4) Intersection of the sets A and B" << endl;
 	cout << "5) Set difference of the sets A and B" << endl;
 	cout << "6) Subsets of the sets A and B" << endl;
 	cout << "0) Quit" << endl;
+	cout << "____________________________________________________________" << endl;
 	cout << "Enter your choice: ";
 	cin >> choice2;
-	if (choice2 != 2 && choice2 != 3 && choice2 != 4 && choice2 != 5 && choice2 != 6) {
-		cout << "There is no such option here! Bye for now!";
+
+	if (choice2 != 2 && choice2 != 3 && choice2 != 4 && choice2 != 5 && choice2 != 6) 
+	{
+		cout << "There is no such option here! Bye for now!" << endl;
 	}
-	else {
+	else 
+	{
 		//this is the case for the menu options
-		switch (choice2) {
+		switch (choice2) 
+		{
 			//the case for the first option
 		case 2: findUnion(masivA, masivB, n, m);
 
@@ -217,33 +275,71 @@ bool secondMenu(float* masivA, float* masivB, int n, int m) {
 			break;
 		}
 	}
+
 	return false;
-
 }
-
 //main menu
-bool mainMenu(float* masivA, float* masivB, int n, int m) {
+bool mainMenu(float* masivA, float* masivB, int n, int m) 
+{
 
 	bool secondmenu;
 	int choice;
-	//Greetings and the menu options
-	cout << "----------WELCOME  TO  OUR  PROGRAM---------- " << endl;
-	cout << endl;
-	cout << "1) Show greeting" << endl;
 
-	cout << "0) Quit" << endl;
-	cout << "Enter your choice:";
+	//Greetings and the menu options
+	cout << "_______________________WELCOME TO OUR PROJECT___________________ " << endl;
+	cout << endl;
+	cout << "1) Try our program for operations with mathematical sets!" << endl;
+	cout << "0) Quit." << endl;
+	cout << "________________________________________________________________" << endl;
+	cout << endl;
+	cout << "Enter your choice: ";
 	cin >> choice;
-	if (choice != 1 && choice != 0) {
-		cout << "There is no such option here! Bye for now!";
+
+	if (choice != 1 && choice != 0) 
+	{
+		cout << "____________________________________________________________";
+		cout << "There is no such option here! Bye for now!"<<endl;
 	}
-	else {
+	else 
+	{
 		//this is the case for the menu options
-		switch (choice) {
-		case 1: {
-			cout << "welcome" << endl;
+		switch (choice) 
+		{
+		case 1: 
+		{
+			cout << endl;
+			cout << "Enter how many elements you want to have in the first set (from 2 to 100): ";
+			//have to find out how to display error message if wrong data is entered in while cycles!!!
+
+			do 
+			{
+				cin >> n; //input a number from a variable n
+
+			} while (n < 2 or n > 100); // while loop that counts all numbers from 2 to 100
+
+			cout << "* Enter the elements of the first array: " << endl; //output the text in the quotes
+			cout << "A = ";
+			for (int i = 0; i < n; i++) // Enter the elements of the array masivA
+			{
+				cin >> masivA[i];
+			}
+
+			cout << "Enter how many elements you want to have in the second set (from 2 to 100): "; //output the text in the quotes
+			do 
+			{
+				cin >> m; //input variable m 
+
+			} while (m < 2 or m > 100); //while loop
+
+			cout <<"* Enter the elements of the second array: " << endl; //output the text in the quotes
+			cout << "B = ";
+			for (int i = 0; i < m; i++)  // Enter the elements of the array masivB
+			{
+				cin >> masivB[i];
+			}
 			//opens the second menu and repeats it
-			do {
+			do 
+			{
 				secondmenu = secondMenu(masivA, masivB, n, m);
 			} while (secondmenu);
 
