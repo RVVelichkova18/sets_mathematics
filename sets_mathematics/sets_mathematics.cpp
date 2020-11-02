@@ -15,29 +15,30 @@ using namespace std;
 //vuvejdane na danni
 //menu
 
-int findIntersection(int A[], int B[], int n, int m, int I[])
+float findIntersection(float masivA[], float masivB[], int n, int m, float masivI[])
 {
 	int k = 0;
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
 		{
-			if (A[i] == B[j])
+			if (masivA[i] == masivB[j])
 			{
-				I[k++] = A[i];
+				masivI[k++] = masivA[i];
 			}
 		}
 	}
 	return k;
 }
 
-void printIntersection(int A[], int B[], int n, int m, int I[])
+void printIntersection(float masivA[], float masivB[], int n, int m)
 {
-	cout << "sechenie:";
-	int sectCount = findIntersection(A, B, n, m, I);
-	for (int i = 0; i < sectCount; i++)
+	float masivI[100];
+	cout << "sechenie: ";
+	int intersectCount = findIntersection(masivA, masivB, n, m, masivI);
+	for (int i = 0; i < intersectCount; i++)
 	{
-		cout << I[i] << " ";
+		cout << masivI[i] << " ";
 	}
 }
 
@@ -157,7 +158,7 @@ bool secondMenu(float masivA, float masivB, int n, int m) {
 				return true;
 				break;
 				//the brake state of the program
-			case 4:
+			case 4: printIntersection(masivA, masivB, n, m);
 
 				cout << endl;
 				return true;
