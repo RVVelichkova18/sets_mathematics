@@ -4,9 +4,6 @@
 #include <iostream>
 using namespace std;
 
-
-
-
 //podmnojestva (chastichni i pulni)
 //sbor
 //sechenie
@@ -91,7 +88,7 @@ float findUnion(float masivA[], float masivB[], int n, int m)
 		}
 		if (flag != 1)
 		{
-			cout << masivB[j] << " ";
+			cout << "Union is: "<<masivB[j] << " ";
 		}
 	}
 	return 0;
@@ -116,7 +113,7 @@ int findIntersection(float masivA[], float masivB[], int n, int m, float masivI[
 void printIntersection(float masivA[], float masivB[], int n, int m)
 {
 	float masivI[100];
-	cout << "sechenie: ";
+	cout << "Intersection is: ";
 	int intersectCount = findIntersection(masivA, masivB, n, m, masivI);
 	for (int i = 0; i < intersectCount; i++)
 	{
@@ -317,14 +314,3 @@ int main()
 	} while (doShowMenu);
     
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
