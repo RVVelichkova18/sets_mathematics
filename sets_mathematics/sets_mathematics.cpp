@@ -15,6 +15,32 @@ using namespace std;
 //vuvejdane na danni
 //menu
 
+float findUnion(float masivA[], float masivB[], int n, int m)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << masivA[i] << " ";
+	}
+	int flag;
+	for (int j = 0; j < m; j++)
+	{
+		flag = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (masivA[i] == masivB[j])
+			{
+				flag = 1;
+				break;
+			}
+		}
+		if (flag != 1)
+		{
+			cout << masivB[j] << " ";
+		}
+	}
+	return 0;
+}
+
 float findIntersection(float masivA[], float masivB[], int n, int m, float masivI[])
 {
 	int k = 0;
