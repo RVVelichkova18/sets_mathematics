@@ -15,6 +15,32 @@ using namespace std;
 //vuvejdane na danni
 //menu
 
+int findIntersection(int A[], int B[], int n, int m, int I[])
+{
+	int k = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			if (A[i] == B[j])
+			{
+				I[k++] = A[i];
+			}
+		}
+	}
+	return k;
+}
+
+void printIntersection(int A[], int B[], int n, int m, int I[])
+{
+	cout << "sechenie:";
+	int sectCount = findIntersection(A, B, n, m, I);
+	for (int i = 0; i < sectCount; i++)
+	{
+		cout << I[i] << " ";
+	}
+}
+
 bool isSubset(float masivA[], float masivB[], int m, int n)
 {
 	int i = 0;
