@@ -245,7 +245,7 @@ bool secondMenu(float masivA[], float masivB[], int n, int m) {
 				cout << endl;
 				return true;
 				break;
-			case 5:
+			case 5: showDifference(masivA, masivB, n, m);
 
 				cout << endl;
 				return true;
