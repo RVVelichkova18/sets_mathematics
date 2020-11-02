@@ -220,7 +220,6 @@ bool secondMenu(float* masivA, float* masivB, int n, int m)
 {
 	int choice2;
 
-	cout << "____________________________________________________________" << endl;
 	cout << "___________________________Options__________________________" << endl;
 	cout << "2) Union of the sets A and B " << endl;
 	cout << "3) Cartesian product of the sets A and B " << endl;
@@ -235,6 +234,7 @@ bool secondMenu(float* masivA, float* masivB, int n, int m)
 	if (choice2 != 2 && choice2 != 3 && choice2 != 4 && choice2 != 5 && choice2 != 6) 
 	{
 		cout << "There is no such option here! Bye for now!" << endl;
+		cout << endl;
 	}
 	else 
 	{
@@ -285,8 +285,6 @@ bool mainMenu(float* masivA, float* masivB, int n, int m)
 	bool secondmenu;
 	int choice;
 
-	//Greetings and the menu options
-	cout << "_______________________WELCOME TO OUR PROJECT___________________ " << endl;
 	cout << endl;
 	cout << "1) Try our program for operations with mathematical sets!" << endl;
 	cout << "0) Quit." << endl;
@@ -297,7 +295,7 @@ bool mainMenu(float* masivA, float* masivB, int n, int m)
 
 	if (choice != 1 && choice != 0) 
 	{
-		cout << "____________________________________________________________";
+		cout << "______________________________________________________________" << endl;
 		cout << "There is no such option here! Bye for now!"<<endl;
 	}
 	else 
