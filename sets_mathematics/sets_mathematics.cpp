@@ -14,7 +14,7 @@ using namespace std;
 
 
 
-int difference(float masivA[], float masivB[], int n, int m, float masivC[])
+int difference(float* masivA, float* masivB, int n, int m, float masivC[])
 {
 	int k = 0;
 	for (int i = 0; i < n; i++) {
@@ -32,7 +32,7 @@ int difference(float masivA[], float masivB[], int n, int m, float masivC[])
 	return k;
 }
 
-void showDifference(float masivA[], float masivB[], int n, int m)
+void showDifference(float* masivA, float* masivB, int n, int m)
 {
 	float masivC[100];
 
@@ -274,6 +274,9 @@ bool mainMenu(float* masivA, float* masivB, int n, int m) {
 
 int main()
 {
+	cout << "----------PLEASE ENETER VALUES BEFORE PROCEEDING OT THE PROGRAM---------- " << endl;
+	cout << endl;
+
 	float masivA[200], masivB[200];
 	int n = 0, m = 0;
 
