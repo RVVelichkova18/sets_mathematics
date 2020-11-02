@@ -310,7 +310,7 @@ bool mainMenu(float masivA[], float masivB[], int n, int m) {
 int main()
 {
 	float masivA[200], masivB[200];
-	int n, m;
+	int n = 0, m = 0;
 	bool doShowMenu = true;
 	do {
 		doShowMenu = mainMenu(masivA, masivB, n, m);
