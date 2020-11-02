@@ -4,10 +4,7 @@
 #include <iostream>
 using namespace std;
 
-float masivA[200], masivB[200];
-int n, m;
-float sechenieMasiv[200];
-int sechenieIndex;
+
 
 
 //podmnojestva (chastichni i pulni)
@@ -18,7 +15,42 @@ int sechenieIndex;
 //vuvejdane na danni
 //menu
 
+bool isSubset(float masivA[], float masivB[], int m, int n)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < m; j++)
+		{
+			if (masivB[i] == masivA[j])
+				break;
+		}
+		if (j == m)
+			return 0;
+	}
+	return 1;
+}
 
+
+void showSubset(float masivA[], float masivB[], int n, int m)
+{
+
+	if (m < n)
+	{
+		if (isSubset(masivA, masivB, n, m))
+			cout << "masivB is subset of masivA" << endl;
+		else
+			cout << "masivB is not subset of masivA" << endl;
+	}
+	else
+	{
+		if (isSubset(masivB, masivA, m, n))
+			cout << "masivA is subset of masivB" << endl;
+		else
+			cout << "masivA is not subset of masivB" << endl;
+	}
+}
 
 void cartesianProduct(float masivA[], float masivB[], int n, int m)
 {
@@ -93,13 +125,28 @@ bool secondMenu(float masivA, float masivB, int n, int m) {
 				return true;
 				break;
 				//the case for the second option
-			case 3:
+			case 3: cartesianProduct(masivA, masivB, n, m);
 
 				cout << endl;
 				return true;
 				break;
 				//the brake state of the program
 			case 4:
+
+				cout << endl;
+				return true;
+				break;
+			case 5:
+
+				cout << endl;
+				return true;
+				break;
+			case 6: showSubset(masivA, masivB, n, m);
+
+				cout << endl;
+				return true;
+				break;
+			case 0:
 				return false;
 			default:
 				break;
@@ -112,13 +159,13 @@ bool secondMenu(float masivA, float masivB, int n, int m) {
 //main menu
 bool mainMenu(float masivA, float masivB, int n, int m) {
 
-
 	bool secondmenu;
 	int choice;
 	//Greetings and the menu options
 	cout << "----------WELCOME  TO  OUR  PROGRAM---------- " << endl;
 	cout << endl;
-	cout << "1)Enter (1) if you want to know how to use mathematical sets operations." << endl;
+	cout << "1)Enter (1) to enter the elemnts of the two subsets you'll be using." << endl;
+	
 	cout << "0) Quit" << endl;
 	cout << "Enter your choice:";
 	cin >> choice;
@@ -128,22 +175,22 @@ bool mainMenu(float masivA, float masivB, int n, int m) {
 	else {
 		//this is the case for the menu options
 		switch (choice) {
-			case 1: {
-				enterElementsOfArrays(masivA, masivB, m, n);
-				//opens the second menu and repeats it
-				do {
-					secondmenu = secondMenu(masivA, masivB, n, m);
-				} while (secondmenu);
+		case 1: {
+			enterElementsOfArrays(masivA, masivB, m, n);
+			//opens the second menu and repeats it
+			do {
+				secondmenu = secondMenu(masivA, masivB, n, m);
+			} while (secondmenu);
 
-				return true;
-			}
-				  //exit
-			case 4:
-				cout << "Bye for now!" << endl;
-				return false;
+			return true;
+		}
+			  //exit
+		case 0:
+			cout << "Bye for now!" << endl;
+			return false;
 
-			default:
-				break;
+		default:
+			break;
 		}
 	}
 	//stops the main menu from repeating
@@ -153,8 +200,13 @@ bool mainMenu(float masivA, float masivB, int n, int m) {
 
 int main()
 {
+	float masivA[200], masivB[200];
+	int n, m;
+	bool doShowMenu = true;
+	do {
+		doShowMenu = mainMenu(masivA, masivB, n, m);
+	} while (doShowMenu);
     
-    enterElementsOfArrays(masivA, masivB, n, m);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
