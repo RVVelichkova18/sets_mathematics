@@ -4,9 +4,6 @@
 #include <iostream>
 using namespace std;
 
-
-
-
 //podmnojestva (chastichni i pulni)
 //sbor
 //sechenie
@@ -14,6 +11,8 @@ using namespace std;
 //cartesianski produkt
 //vuvejdane na danni
 //menu
+
+
 
 int difference(float masivA[], float masivB[], int n, int m, float masivC[])
 {
@@ -40,11 +39,11 @@ void showDifference(float masivA[], float masivB[], int n, int m)
 	int diffA = difference(masivA, masivB, n, m, masivC);
 	if (diffA == 0)
 	{
-		cout << "there is no difference for set A" << endl;
+		cout << "There is no difference for set A" << endl;
 	}
 	else
 	{
-		cout << "the difference for set A is: ";
+		cout << "The difference for set A is: ";
 
 		for (int i = 0; i < diffA; i++)
 		{
@@ -57,11 +56,11 @@ void showDifference(float masivA[], float masivB[], int n, int m)
 
 	if (diffB == 0)
 	{
-		cout << "there is no difference for set B" << endl;
+		cout << "There is no difference for set B" << endl;
 	}
 	else
 	{
-		cout << "the difference for set B is: ";
+		cout << "The difference for set B is: ";
 		for (int i = 0; i < diffB; i++)
 		{
 			cout << masivC[i];
@@ -71,7 +70,7 @@ void showDifference(float masivA[], float masivB[], int n, int m)
 	cout << endl;
 }
 
-float findUnion(float masivA[], float masivB[], int n, int m)
+float findUnion(float* masivA, float* masivB, int n, int m)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -97,7 +96,7 @@ float findUnion(float masivA[], float masivB[], int n, int m)
 	return 0;
 }
 
-int findIntersection(float masivA[], float masivB[], int n, int m, float masivI[])
+int findIntersection(float* masivA, float* masivB, int n, int m, float masivI[])
 {
 	int k = 0;
 	for (int i = 0; i < n; i++)
@@ -113,7 +112,7 @@ int findIntersection(float masivA[], float masivB[], int n, int m, float masivI[
 	return k;
 }
 
-void printIntersection(float masivA[], float masivB[], int n, int m)
+void printIntersection(float* masivA, float* masivB, int n, int m)
 {
 	float masivI[100];
 	cout << "sechenie: ";
@@ -124,7 +123,7 @@ void printIntersection(float masivA[], float masivB[], int n, int m)
 	}
 }
 
-bool isSubset(float masivA[], float masivB[], int m, int n)
+bool isSubset(float* masivA, float* masivB, int m, int n)
 {
 	int i = 0;
 	int j = 0;
@@ -142,7 +141,7 @@ bool isSubset(float masivA[], float masivB[], int m, int n)
 }
 
 
-void showSubset(float masivA[], float masivB[], int n, int m)
+void showSubset(float* masivA, float* masivB, int n, int m)
 {
 
 	if (m < n)
@@ -161,7 +160,7 @@ void showSubset(float masivA[], float masivB[], int n, int m)
 	}
 }
 
-void cartesianProduct(float masivA[], float masivB[], int n, int m)
+void cartesianProduct(float* masivA, float* masivB, int n, int m)
 {
     cout << "cartesian product is: {";
     for (int i = 0; i < n; i++)
@@ -174,43 +173,9 @@ void cartesianProduct(float masivA[], float masivB[], int n, int m)
     cout << "} ";
 }
 
-void enterElementsOfArrays(float masivA[], float masivB[], int n, int m)
-{
-
-    cout << "Enter how many elements you want to have in the first set (from 2 to 100): ";
-
-    //have to find out how to display error message if wrong data is entered in while cycles!!!
-
-    do {
-
-        cin >> n;
-
-    } while (n < 2 or n > 100);
-
-    cout << "Enter the elements of the first array: " << endl;
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> masivA[i];
-    }
 
 
-    cout << "Enter how many elements you want to have in the second set (from 2 to 100): ";
-    do {
-
-        cin >> m;
-
-    } while (m < 2 or m > 100);
-
-    cout << "Enter the elements of the second array: " << endl;
-
-    for (int i = 0; i < m; i++)
-    {
-        cin >> masivB[i];
-    }
-}
-
-bool secondMenu(float masivA[], float masivB[], int n, int m) {
+bool secondMenu(float* masivA, float* masivB, int n, int m) {
 	int choice2;
 	cout << "----------Options----------" << endl;
 	cout << "2) Union of the sets A and B " << endl;
@@ -228,7 +193,7 @@ bool secondMenu(float masivA[], float masivB[], int n, int m) {
 		//this is the case for the menu options
 		switch (choice2) {
 			//the case for the first option
-			case 2:
+		case 2: findUnion(masivA, masivB, n, m);
 
 				cout << endl;
 				return true;
@@ -266,14 +231,14 @@ bool secondMenu(float masivA[], float masivB[], int n, int m) {
 }
 
 //main menu
-bool mainMenu(float masivA[], float masivB[], int n, int m) {
+bool mainMenu(float* masivA, float* masivB, int n, int m) {
 
 	bool secondmenu;
 	int choice;
 	//Greetings and the menu options
 	cout << "----------WELCOME  TO  OUR  PROGRAM---------- " << endl;
 	cout << endl;
-	cout << "1)Enter (1) to enter the elemnts of the two subsets you'll be using." << endl;
+	cout << "1) Show greeting" << endl;
 	
 	cout << "0) Quit" << endl;
 	cout << "Enter your choice:";
@@ -285,7 +250,7 @@ bool mainMenu(float masivA[], float masivB[], int n, int m) {
 		//this is the case for the menu options
 		switch (choice) {
 		case 1: {
-			enterElementsOfArrays(masivA, masivB, m, n);
+			cout << "welcome" << endl;
 			//opens the second menu and repeats it
 			do {
 				secondmenu = secondMenu(masivA, masivB, n, m);
@@ -311,6 +276,39 @@ int main()
 {
 	float masivA[200], masivB[200];
 	int n = 0, m = 0;
+
+	cout << "Enter how many elements you want to have in the first set (from 2 to 100): ";
+
+	//have to find out how to display error message if wrong data is entered in while cycles!!!
+
+	do {
+
+		cin >> n;
+
+	} while (n < 2 or n > 100);
+
+	cout << "Enter the elements of the first array: " << endl;
+
+	for (int i = 0; i < n; i++)
+	{
+		cin >> masivA[i];
+	}
+
+
+	cout << "Enter how many elements you want to have in the second set (from 2 to 100): ";
+	do {
+
+		cin >> m;
+
+	} while (m < 2 or m > 100);
+
+	cout << "Enter the elements of the second array: " << endl;
+
+	for (int i = 0; i < m; i++)
+	{
+		cin >> masivB[i];
+	}
+
 	bool doShowMenu = true;
 	do {
 		doShowMenu = mainMenu(masivA, masivB, n, m);
