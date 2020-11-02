@@ -15,6 +15,62 @@ using namespace std;
 //vuvejdane na danni
 //menu
 
+int difference(float masivA[], float masivB[], int n, int m, float masivC[])
+{
+	int k = 0;
+	for (int i = 0; i < n; i++) {
+		bool found = false;
+		for (int j = 0; j < m; j++) {
+			if (masivA[i] == masivB[j]) {
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			masivC[k++] = masivA[i];
+		}
+	}
+	return k;
+}
+
+void showDifference(float masivA[], float masivB[], int n, int m)
+{
+	float masivC[100];
+
+	int diffA = difference(masivA, masivB, n, m, masivC);
+	if (diffA == 0)
+	{
+		cout << "there is no difference for set A" << endl;
+	}
+	else
+	{
+		cout << "the difference for set A is: ";
+
+		for (int i = 0; i < diffA; i++)
+		{
+			cout << masivC[i];
+		}
+		cout << endl;
+	}
+
+	int diffB = difference(masivB, masivA, m, n, masivC);
+
+	if (diffB == 0)
+	{
+		cout << "there is no difference for set B" << endl;
+	}
+	else
+	{
+		cout << "the difference for set B is: ";
+		for (int i = 0; i < diffB; i++)
+		{
+			cout << masivC[i];
+		}
+	}
+
+	cout << endl;
+}
+
 float findUnion(float masivA[], float masivB[], int n, int m)
 {
 	for (int i = 0; i < n; i++)
@@ -41,7 +97,7 @@ float findUnion(float masivA[], float masivB[], int n, int m)
 	return 0;
 }
 
-float findIntersection(float masivA[], float masivB[], int n, int m, float masivI[])
+int findIntersection(float masivA[], float masivB[], int n, int m, float masivI[])
 {
 	int k = 0;
 	for (int i = 0; i < n; i++)
@@ -154,7 +210,7 @@ void enterElementsOfArrays(float masivA[], float masivB[], int n, int m)
     }
 }
 
-bool secondMenu(float masivA, float masivB, int n, int m) {
+bool secondMenu(float masivA[], float masivB[], int n, int m) {
 	int choice2;
 	cout << "----------Options----------" << endl;
 	cout << "2) Union of the sets A and B " << endl;
@@ -165,7 +221,7 @@ bool secondMenu(float masivA, float masivB, int n, int m) {
 	cout << "0) Quit" << endl;
 	cout << "Enter your choice: ";
 	cin >> choice2;
-	if (choice2 != 2 && choice2 != 3 && choice2 != 4) {
+	if (choice2 != 2 && choice2 != 3 && choice2 != 4 && choice2 != 5 && choice2 != 6) {
 		cout << "There is no such option here! Bye for now!";
 	}
 	else {
@@ -210,7 +266,7 @@ bool secondMenu(float masivA, float masivB, int n, int m) {
 }
 
 //main menu
-bool mainMenu(float masivA, float masivB, int n, int m) {
+bool mainMenu(float masivA[], float masivB[], int n, int m) {
 
 	bool secondmenu;
 	int choice;
