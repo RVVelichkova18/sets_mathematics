@@ -132,25 +132,31 @@ int findIntersection(float* masivA, float* masivB, int n, int m, float masivI[])
 void printIntersection(float* masivA, float* masivB, int n, int m)
 {
 	float masivI[100];
-	cout << "Intersection is: { ";
 	int intersectCount = findIntersection(masivA, masivB, n, m, masivI);
-
-	for (int i = 0; i < intersectCount; i++)
+	if (intersectCount != 0)
 	{
-		cout << masivI[i] << " ";
-	}
-	cout << "}" << endl;
+		cout << "Intersection is: { ";
+		for (int i = 0; i < intersectCount; i++)
+		{
+			cout << masivI[i] << " ";
+		}
+		cout << "}" << endl;
 
-	cout << endl;
-	cout << "Visualization: " << endl;
-	cout << endl;
-	cout << "   ****   ****" << endl;
-	cout << " *      *      *" << endl;
-	cout << "*      ***      *" << endl;
-	cout << "*      ***      *" << endl;
-	cout << "*      ***      *" << endl;
-	cout << " *      *      *" << endl;
-	cout << "   ****   ****" << endl;
+		cout << endl;
+		cout << "Visualization: " << endl;
+		cout << endl;
+		cout << "   ****   ****" << endl;
+		cout << " *      *      *" << endl;
+		cout << "*      ***      *" << endl;
+		cout << "*      ***      *" << endl;
+		cout << "*      ***      *" << endl;
+		cout << " *      *      *" << endl;
+		cout << "   ****   ****" << endl;
+	}
+	else
+	{
+		cout << "There is no Intersection!"<<endl;
+	}
 }
 
 bool isSubset(float* masivA, float* masivB, int m, int n)
@@ -226,12 +232,12 @@ bool secondMenu(float* masivA, float* masivB, int n, int m)
 	cout << "4) Intersection of the sets A and B" << endl;
 	cout << "5) Set difference of the sets A and B" << endl;
 	cout << "6) Subsets of the sets A and B" << endl;
-	cout << "0) Quit" << endl;
+	cout << "7) Return to main options" << endl;
 	cout << "____________________________________________________________" << endl;
 	cout << "Enter your choice: ";
 	cin >> choice2;
 
-	if (choice2 != 2 && choice2 != 3 && choice2 != 4 && choice2 != 5 && choice2 != 6) 
+	if (choice2 != 2 && choice2 != 3 && choice2 != 4 && choice2 != 5 && choice2 != 6 && choice2 != 7) 
 	{
 		cout << "There is no such option here! Bye for now!" << endl;
 		cout << endl;
@@ -269,7 +275,7 @@ bool secondMenu(float* masivA, float* masivB, int n, int m)
 			cout << endl;
 			return true;
 			break;
-		case 0:
+		case 7:
 			return false;
 		default:
 			break;
